@@ -1,0 +1,22 @@
+#footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 30px;
+}
+#footer a {
+  color: white;
+}
+
+#divLinkUp {
+  position: relative;
+  background-color: white;
+}
+
+#linkUp {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}/*# sourceMappingURL=footer.css.map */
