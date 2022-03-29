@@ -117,6 +117,8 @@ class Controller {
                 let divMsg = document.getElementById("bye");
                 divMsg.innerHTML = this.args[2];
                 this.args[2] = '';
+                console.log(this.args[0]);
+                let majDateBLModifie = await Model.patchBl(BASE_URL + "/wprod/bl/" +this.args[0], token);
             }
         }
         catch {
