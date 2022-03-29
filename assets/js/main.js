@@ -21,7 +21,9 @@ if (isLogged == null) {
         localStorage.removeItem('user');
         router.execute("showLogin");
     } else {
-        console.log("token encore actif");
-        router.execute("showCompetitionsList");}
+        router.execute("showBLList");
+        console.log("token tjrs actif");
+    }
 }
+
 

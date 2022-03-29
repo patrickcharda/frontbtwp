@@ -17,12 +17,16 @@ class Router {
                     await controller.showLogged();
                     break;
 
+                case "showBLList":
+                    await controller.showBLList();
+                    break;
+                
                 case "showBL":
                     await controller.showBL();
                     break;
                 
-                case "showCompetitionsList":
-                    await controller.showCompetitionsList();
+                case "showBLUpdated":
+                    await controller.showBLUpdated();
                     break;
                 
                 case "showTest":

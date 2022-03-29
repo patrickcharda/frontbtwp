@@ -12,6 +12,8 @@ class ViewFactory {
                 return new LoginView();
             case "BLListView":
                 return new BLListView();
+            case "BLView":
+                return new BLView();
             case "competitionsListView":
                 return new CompetitionsListView();
             case "testView":
