@@ -44,6 +44,7 @@ class BLView extends AbstractView {
         let testchk ='';
         let observ ='';
         let comment ='';
+        let qte ='';
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             e.stopPropagation();
@@ -57,6 +58,9 @@ class BLView extends AbstractView {
                 //console.log(bli.obs);
                 comment = document.getElementById("txtcmt"+bli.bli_num);
                 bli.cmt = comment.value;
+                qte = document.getElementById("qte"+bli.bli_num);
+                bli.qte = qte.value;
+                console.log(bli.qte);
             }
             /* for (let bli of blis) {
                 console.log(bli.bli_num, bli.chk);
@@ -73,14 +77,11 @@ class BLView extends AbstractView {
         <div class='formGroup'>
         <strong>${bli.bli_num}</strong>&nbsp;${bli.bli_libel}<br>
         <em>Code Produit:</em>&nbsp;${bli.bli_codeproduit}<br>
-        <em>Quantité:</em>&nbsp;${bli.bli_qte}<br>
+        <em>Qté: <input type="text" id="qte${bli.bli_num}" maxlength="10" size="5" value="${bli.bli_qte}"><br>
         <em>Prix unitaire:</em>&nbsp;${bli.bli_pu}<br>
         <em>Unité:</em>&nbsp;${bli.bli_unite}<br>
         </div><br>
         <div class='formGroup'>
-        <label for="select">
-        Sélectionner
-        </label>
         <input id="chk${bli.bli_num}" type="checkbox" class="form-control" name="select"`;
         if (bli.bli_select) {
             content+=' checked';
@@ -90,7 +91,7 @@ class BLView extends AbstractView {
         <div class='formGroup'>
         <label for="observations">
         Observations :<br>
-        <textarea id="txtobs${bli.bli_num}" name="observations" class="form-control" placeholder="Ajouter des observations ici; penser à valider en bas de page." rows="4" cols="50" maxlength="2000">`;
+        <textarea id="txtobs${bli.bli_num}" name="observations" class="form-control" placeholder="Ajouter des observations ici." rows="1" maxlength="2000">`;
         if (bli.bli_observ === null) {
             content+= "";
         } 
@@ -103,7 +104,7 @@ class BLView extends AbstractView {
         <div class='formGroup'>
         <label for="commentaires">
         Commentaires : <br>
-        <textarea id="txtcmt${bli.bli_num}" name="commentaires" class="form-control" placeholder="Ajouter des commentaires ici; penser à valider en bas de page." rows="4" cols="50" maxlength="2000">`;
+        <textarea id="txtcmt${bli.bli_num}" name="commentaires" class="form-control" placeholder="Ajouter des commentaires ici." rows="1" maxlength="2000">`;
         if (bli.bli_comment === null) {
             content+= "";
         } 
@@ -143,7 +144,7 @@ class BLView extends AbstractView {
     } */
 
     display(content) {
-        console.log(content);
+        //console.log(content);
         this.container.innerHTML += content;
     }
 

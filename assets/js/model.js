@@ -68,6 +68,7 @@ class Model {
                 bli_select: bli.chk,
                 bli_observ: bli.obs,
                 bli_comment: bli.cmt,
+                bli_qte: parseInt(bli.qte),
             }
             
         return fetch(url,
