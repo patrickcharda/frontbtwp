@@ -5,7 +5,6 @@ class Controller {
 
     constructor(args) {
         this.args = args;
-        //this.panier = [];
     }
 
     async showLogin() {
@@ -16,25 +15,20 @@ class Controller {
 
     async showLogged() {
         
-        let username = this.args[0];
-        //console.log('arg1 :'+email); 
+        let username = this.args[0]; 
         let password = this.args[1];
-        //console.log('arg2 :'+password);
         try {
         let tokens = await Model.login(BASE_URL + "/login/", username, password);
-        console.log('retour login bck :' +tokens.access);
-        //this.showPosts(userLogged);
+        //console.log('retour login bck :' +tokens.access);
 
         if (tokens.refresh != undefined) {
             let refreshedToken = await Model.login(BASE_URL + "/refresh-token/", tokens.refresh, '');
-            console.log('regenerated access token:' +refreshedToken.access);
             let user = {
                 "username": username,
                 "token": refreshedToken.access,
                 "loggedFrom": new Date().getTime()
                 }
             localStorage.setItem('user', JSON.stringify(user));
-            //this.showCompetitionsList()
             this.showBLList()
             } else {
             this.showLogin()
@@ -45,33 +39,14 @@ class Controller {
             errorView.render();
         }
     }
-/* 
-    async showCompetitionsList() {
-        let user = JSON.parse(localStorage.getItem('user'));
-        console.log(user.token);
-        let token = user.token;
-        try {
-            let competitionsList = await Model.getCompetitions(BASE_URL + "/competitions/", token);
-            console.log(competitionsList.results);
-
-            let competitionsListView = ViewFactory.getView("competitionsListView");
-            competitionsListView.addVariable("competitions", competitionsList.results);
-            //console.log(competitionsList);
-            competitionsListView.render();
-        }
-        catch {
-            let errorView = ViewFactory.getView("error");
-            errorView.render();
-        }
-    } */
 
     async showBLList() {
         let user = JSON.parse(localStorage.getItem('user'));
-        console.log(user.token);
+        //console.log(user.token);
         let token = user.token;
         try {
             let BLList = await Model.getBls(BASE_URL + "/wprod/bls/", token);
-            console.log(BLList.results);
+            //console.log(BLList.results);
 
             let BLListView = ViewFactory.getView("BLListView");
             BLListView.addVariable("bls", BLList.results);
@@ -85,40 +60,52 @@ class Controller {
 
     async showBL() {
         let user = JSON.parse(localStorage.getItem('user'));
-        console.log(user.token);
-        console.log("option value : " +this.args[0]);
+        //console.log(user.token);
+        //console.log("option value : " +this.args[0]);
         let token = user.token;
         try {
             //si un bl est sélectionné ds la liste déroulante
             if (this.args[0] != "") {
                 let BL = await Model.getBl(BASE_URL + "/wprod/bl/" + this.args[0], token);
                 localStorage.setItem('BL', JSON.stringify(BL));
-                console.log(BL.lignes.length);
-                //s'il y a des lignes à afficher
+                //s'il y a des lignes à afficher :
                 let lignes =[];
                 if (BL.lignes.length > 0) {
-                    
                     for (let i = 0; i < BL.lignes.length; i++) {
                         let ligne_id = BL.lignes[i];
                         ligne_id = ligne_id.slice(32, ligne_id.length);
-                        console.log("ligne id : "+ ligne_id);
+                        //console.log("ligne id : "+ ligne_id);
                         let BLI = await Model.getBli(BASE_URL + "/wprod/bli/" + ligne_id, token);
                         lignes.push(BLI);
                     }
-                    console.log(lignes);
-                    localStorage.setItem('lignes', JSON.stringify(lignes));
+                    //console.log(lignes);
+                    //localStorage.setItem('lignes', JSON.stringify(lignes));
                 }
                 let BLView = ViewFactory.getView("BLView");
                 BLView.addVariable("bl", BL);
                 BLView.addVariable("lignes", lignes)
                 BLView.render();
-            }  
+            } 
+            // lors de la mise à jour d'un BL cette fonction est rappelée
+            // si la mise à jour s'est bien déroulée, this.args[2] contient un message de réussite
+            // ce message est affiché ds la div "bye"
             if (this.args[2] != '' && typeof(this.args[2]) != 'undefined') {
-                let divMsg = document.getElementById("bye");
-                divMsg.innerHTML = this.args[2];
                 this.args[2] = '';
-                console.log(this.args[0]);
-                let majDateBLModifie = await Model.patchBl(BASE_URL + "/wprod/bl/" +this.args[0], token);
+                let divMsg = document.getElementById("bye");
+                //console.log(this.args[0]); // contient désormais la référence du bl
+                let dateMajBLModifie = new Date();
+                //formater la date pr la persister
+                let formatedDate = dateMajBLModifie.getFullYear()+"-"+(dateMajBLModifie.getMonth()+1)+"-"+dateMajBLModifie.getDate();
+                formatedDate +="T"+dateMajBLModifie.getHours()+":"+dateMajBLModifie.getMinutes()+":"+dateMajBLModifie.getSeconds();
+                let majDateBLModifie = await Model.patchBl(BASE_URL + "/wprod/bl/" +this.args[0], token, formatedDate);
+                //formater la date pour l'afficher sur la page bl
+                const days = ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'];
+                const months = ['Janv', 'Fevr', 'Mars', 'Avril', 'Mai', 'Juin', 'Juill', 'Août', 'Sept', 'Oct', 'Nov', 'Dec'];
+                let dateMajBLToDisplay = "Mis à jour le "
+                dateMajBLToDisplay+= days[dateMajBLModifie.getDay()]+" "+dateMajBLModifie.getDate()+" "+months[dateMajBLModifie.getMonth()];
+                dateMajBLToDisplay +=" "+dateMajBLModifie.getFullYear();
+                dateMajBLToDisplay +="<br>à "+dateMajBLModifie.getHours()+"h : "+dateMajBLModifie.getMinutes()+"m : "+dateMajBLModifie.getSeconds()+"s";
+                divMsg.innerHTML = dateMajBLToDisplay;
             }
         }
         catch {
@@ -129,25 +116,12 @@ class Controller {
 
     async showBLUpdated() {
         let user = JSON.parse(localStorage.getItem('user'));
-        console.log(user.token);
-        console.log("blis :" +this.args[0]);
-        console.log("bl :" +this.args[1]);
-        let blis = this.args[0];
-        let bl = this.args[1];
+        let blis = this.args[0]; // les lignes du bl
+        let bl = this.args[1]; // l'id du bl
         let token = user.token;
         try {
             for (let bli of blis) {
                 let ligne_id = bli.bli_num;
-                //console.log(ligne_id);
-                //console.log(bli.obs);
-                //récupérer les cases à cocher pour bli_select
-                //let are_selected = JSON.parse(localStorage.getItem('selected'));
-                //console.log(Object.entries(are_selected));
-                /* are_selected.forEach(function(item, index, array) {
-                    console.log(item, index);
-                  }); */
-                //let pos = is_selected.indexOf(`chk${ligne_id}`);
-                //console.log(pos);
                 let bli_updated = await Model.patchBli(BASE_URL + "/wprod/bli/" + ligne_id, token, bli);
             }
             /* let BLUpdatedView = ViewFactory.getView("BLUpdatedView");
@@ -156,7 +130,6 @@ class Controller {
             BLUpdatedView.render(); */
             this.args[0]= bl.bl_num;
             this.args[2] = "La mise à jour s'est bien déroulée";
-            console.log(bl);
             this.showBL();        
         }
         catch {
@@ -165,24 +138,6 @@ class Controller {
         }
     }
 
-    async showTest() {
-        let user = JSON.parse(localStorage.getItem('user'));
-        console.log(user.token);
-        let token = user.token;
-        try {
-            let competitionsList = await Model.getCompetitions(BASE_URL + "/competitions/", token);
-            console.log(competitionsList.results);
-
-            let TestView = ViewFactory.getView("TestView");
-            //competitionsListView.addVariable("competitions", competitionsList.results);
-            //console.log(competitionsList);
-            TestView.render();
-        }
-        catch {
-            let errorView = ViewFactory.getView("error");
-            errorView.render();
-        }
-    }
 
     /**
      * Méthode qui gère la page des erreurs. 

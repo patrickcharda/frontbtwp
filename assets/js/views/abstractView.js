@@ -39,7 +39,7 @@ class AbstractView {
     /**
      * Cette méthode est celle à appeler pour générer l'affichage. 
      * 
-     * Doit être évidement être appelée uniquement depuis les classes filles. 
+     * Doit être évidemment appelée uniquement depuis les classes filles. 
      */
     render() {
         throw new TypeError("Erreur dans ViewFactory, la méthode render ne doit être appelée que sur des classes filles !");
@@ -59,7 +59,5 @@ class AbstractView {
         while (this.container.firstChild) {
             this.container.removeChild(this.container.firstChild);
         }
-        //this.postEventsTab = [];
-        //this.commentEventsTab = [];
     }
 }

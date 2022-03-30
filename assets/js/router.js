@@ -29,9 +29,9 @@ class Router {
                     await controller.showBLUpdated();
                     break;
                 
-                case "showTest":
+                /* case "showTest":
                     await controller.showTest();
-                    break;
+                    break; */
                 default:
                     controller.showError("Route inconnue : " + page);
             }

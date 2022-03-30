@@ -25,11 +25,21 @@
   flex-wrap: wrap;
 }
 
+.bl_content {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+#BlsForm {
+  display: flex;
+}
+
 .form-group {
   display: flex;
-  flex-shrink: 4;
   justify-content: stretch;
   flex-wrap: wrap;
+  flex-basis: 100%;
   margin-bottom: 5px;
   margin-top: 5px;
   padding-top: 5px;

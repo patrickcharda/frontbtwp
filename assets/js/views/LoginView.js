@@ -39,7 +39,7 @@ class LoginView extends AbstractView {
         </form>
         <div>&nbsp;</div>`;
         
-        let content = `<form id="loginForm" method="post" aria-label="Formulaire de connexion">
+        /* let content = `<form id="loginForm" method="post" aria-label="Formulaire de connexion">
                 <div class='formGroup'>
                     <label for="userEmail">
                         Nom d'utilisateur 
@@ -57,7 +57,7 @@ class LoginView extends AbstractView {
                         Valider
                     </button>
                 </div>
-            </form>`;
+            </form>`; */
         
         this.display(contenu);
 

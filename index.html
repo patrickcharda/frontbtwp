@@ -11,7 +11,6 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet"> 
-        <!--<link href="./assets/Fonts/"  type="text/html">-->
 		<link rel="stylesheet" href="./sass/style.css">
         <link href="./assets/fontawesome/css/all.css" rel="stylesheet">
         <script defer src="./assets/js/menu.js"></script>
@@ -27,7 +26,6 @@
         <script src="./assets/js/views/BLListView.js" defer></script>
         <script src="./assets/js/views/BLView.js" defer></script>
         <script src="./assets/js/views/BLUpdatedView.js" defer></script>
-        <script src="./assets/js/views/CompetitionsListView.js" defer></script>
         <script src="./assets/js/router.js" defer></script>
         <script src="./assets/js/controller.js" defer></script>
         <script src="./assets/js/main.js" defer></script>
@@ -37,7 +35,7 @@
 		<header>
 			<div class="identity">
                 <div class="identity--logo">
-                    <a href="./index.php">
+                    <a href="./index.html">
                         <img src="./assets/img/LOGO_MONKEYSOFT_COLOR_TRANSPARENT.png" alt="logo monkey-soft">
                     </a>
                 </div>
@@ -53,123 +51,13 @@
                 </div>
 				<div id="menu">
 					<div class="nav">
-                        <div class="menu-item">
-                            
-                                <button class="accordion">
-                                    Accueil
-                                </button>
-                                <ul class="panel">
-                                <li>	
-                                    <ul>
-                                        <li><a href="./index.php#conception">Conception sur mesure</a></li>
-                                        <li><a href="./index.php#solutions">Solutions logicielles</a></li>
-                                        <li><a href="./index.php#temoignages">Ils nous font confiance</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="menu-item">
-                            <button class="accordion">
-                                Notre entreprise
-                            </button>
-                            <ul class="panel">
-                                <li>
-                                    <ul>
-                                        <li><a href="#">Notre métier</a></li>
-                                        <li><a href="#">Notre méthodologie</a></li>
-                                        <li><a href="#">Notre équipe</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="menu-item">
-                            <button class="standalone">
-                                Votre logiciel sur mesure
-                            </button>
-                        </div>
-                        <div class="menu-item">
-                            <button class="accordion">
-                                Solutions métiers
-                            </button>
-                            <ul class="panel">
-                                <li>
-                                    <ul>
-                                        <li><a href="#">BTSystem</a></li>
-                                        <li><a href="#">FOXTtroc</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="menu-item">
-                            <button class="standalone" id="btn-contact">
-                                Contact
-                            </button>
-                        </div>
+                      
 					</div>
 				</div>
 			</div>
             <div class="menu-container2">
                 <div id="header-menu">
-                    <div class="nav" id="nav1">
-                        <div id="div-menu1" class="divmenu">
-                            <div>
-                                <a class="link" id="link1" href="#"><span id="burger1"></span><span id="menutitle1" class="menutitle">Accueil</span></a>
-                            </div>
-                            <ul class="list-unstyled" id="ul1">
-                                <li><a href="#concept">Conception</a></li>
-                                <li><a href="#solut">Solutions logicielles</a></li>
-                                <li><a href="#temoign">Références</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="nav" id="nav2">
-                        <div id="div-menu2" class="divmenu">
-                            <div>
-                                <a class="link" id="link2" href="#"><span id="burger2"></span><span id="menutitle2" class="menutitle">Notre entreprise</span></a>
-                            </div>
-                            <ul class="list-unstyled" id="ul2">
-                                <li><a href="#">Accueil 1</a></li>
-                                <li><a href="#">Formation 1</a></li>
-                                <li><a href="#">Contact 1</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="nav" id="nav3">
-                        <div id="div-menu3" class="divmenu">
-                            <div>
-                                <a class="link" id="link3" href="#"><span id="burger3"></span><span id="menutitle3" class="menutitle">Votre logiciel</span></a>
-                            </div>
-                            <ul class="list-unstyled" id="ul3">
-                                <li><a href="#">Accueil 1</a></li>
-                                <li><a href="#">Formation 1</a></li>
-                                <li><a href="#">Contact 1</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="nav" id="nav4">
-                        <div id="div-menu4" class="divmenu">
-                            <div>
-                                <a class="link" id="link4" href="#"><span id="burger4"></span><span id="menutitle4" class="menutitle">Solutions métiers</span></a>
-                            </div>
-                            <ul class="list-unstyled" id="ul4">
-                                <li><a href="#">Accueil 1</a></li>
-                                <li><a href="#">Formation 1</a></li>
-                                <li><a href="#">Contact 1</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="nav" id="nav5">
-                        <div id="div-menu5" class="divmenu">
-                            <div>
-                                <a class="link" id="link5" href="./contact.php"><span id="burger5"></span><span id="menutitle5" class="menutitle">Contact</span></a>
-                            </div>
-                            <!--<ul class="list-unstyled" id="ul5">
-                                <li><a href="#">Accueil 1</a></li>
-                                <li><a href="#">Formation 1</a></li>
-                                <li><a href="#">Contact 1 bla bla bla bla bla bla bla bla bla bla bla bla</a></li>
-                            </ul>-->
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
 		</header>
@@ -178,21 +66,16 @@
                 <div class="hero-contact" id="hero">
                 </div>
 			</section>
-            <section aria-label="Bandeau accueil page connexion">
+            <section aria-label="Bandeau accueil">
                 <div class="form-header" id="account">
                     <h1>
-                        MKS
+                        
                     </h1>        
                 </div>
                 <div id='bye'></div>
 		    </section>
-            <section aria-label="Formulaire de connexion" class="section-contact" id="container">
-                        
-                        
-            
-		    </section>
-            
-            					
+            <section aria-label="Page Bordereaux" class="section-contact" id="container">         
+		    </section>   					
 		</main>	
         <footer>
             <div class="footer-haut">

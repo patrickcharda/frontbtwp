@@ -52,16 +52,9 @@ class Model {
             body: JSON.stringify(data)     
         })
         .then(function(httpBodyResponse) {
-            // httpBodyResponse contient la réponse dans son entièreté, avec le header & le reste. 
-            // Du coup, avec .json, on récupère la partie "json" de la réponse, qui est ce dont
-            // on a réellement besoin. 
             if (httpBodyResponse.ok) {
-                // si le fetch a fonctionné (url correcte), alors on retourne le json. 
-                // si le body ne contient pas de json, alors la méthode json() renverra aussi une 
-                // exception qui sera attrapée dans le routeur. 
                 return httpBodyResponse.json();
             } else {
-                // Sinon, envoie une erreur (qui sera attrapée dans le routeur)
                 throw new Error(`${httpBodyResponse.status} - ${httpBodyResponse.statusText}`);
             }
         })
@@ -87,16 +80,9 @@ class Model {
             body: JSON.stringify(data)     
         })
         .then(function(httpBodyResponse) {
-            // httpBodyResponse contient la réponse dans son entièreté, avec le header & le reste. 
-            // Du coup, avec .json, on récupère la partie "json" de la réponse, qui est ce dont
-            // on a réellement besoin. 
             if (httpBodyResponse.ok) {
-                // si le fetch a fonctionné (url correcte), alors on retourne le json. 
-                // si le body ne contient pas de json, alors la méthode json() renverra aussi une 
-                // exception qui sera attrapée dans le routeur. 
                 return httpBodyResponse.json();
             } else {
-                // Sinon, envoie une erreur (qui sera attrapée dans le routeur)
                 throw new Error(`${httpBodyResponse.status} - ${httpBodyResponse.statusText}`);
             }
         })
@@ -105,12 +91,7 @@ class Model {
         });
     }
 
-    static patchBl(url,token) {
-        let dateMajBLModifie = new Date();
-        //console.log(dateMajBLModifie);
-        var formatedDate = dateMajBLModifie.getFullYear()+"-"+(dateMajBLModifie.getMonth()+1)+"-"+dateMajBLModifie.getDate();
-        formatedDate +="T"+dateMajBLModifie.getHours()+":"+dateMajBLModifie.getMinutes()+":"+dateMajBLModifie.getSeconds();
-        console.log(formatedDate);
+    static patchBl(url,token, formatedDate) {
         var data = {
             bl_dateimport: formatedDate
         }
@@ -125,49 +106,18 @@ class Model {
         body: JSON.stringify(data)     
     })
     .then(function(httpBodyResponse) {
-        // httpBodyResponse contient la réponse dans son entièreté, avec le header & le reste. 
-        // Du coup, avec .json, on récupère la partie "json" de la réponse, qui est ce dont
-        // on a réellement besoin. 
         if (httpBodyResponse.ok) {
-            // si le fetch a fonctionné (url correcte), alors on retourne le json. 
-            // si le body ne contient pas de json, alors la méthode json() renverra aussi une 
-            // exception qui sera attrapée dans le routeur. 
             return httpBodyResponse.json();
         } else {
-            // Sinon, envoie une erreur (qui sera attrapée dans le routeur)
             throw new Error(`${httpBodyResponse.status} - ${httpBodyResponse.statusText}`);
         }
     })
     .catch((error) => {
         throw new Error(`Fetch catch : ${error}`);
     });
-}
-
-   
-    static getCompetitions(url, token) {
-        console.log(token);
-        return fetch(url,
-            {
-                method: 'GET',
-                headers: { 
-                    "Content-type": "application/json; charset=UTF-8",
-                    "Authorization": "Bearer "+ token
-                }
-            })
-            .then(function(httpBodyResponse) {
-                if (httpBodyResponse.ok) {
-                    return httpBodyResponse.json();
-                } else {
-                    throw new Error(`${httpBodyResponse.status} - ${httpBodyResponse.statusText}`);
-                }
-            })
-            .catch((error) => {
-                throw new Error(`Fetch catch : ${error}`);
-            });
     }
 
     static getBls(url, token) {
-        console.log(token);
         return fetch(url,
             {
                 method: 'GET',
@@ -188,7 +138,6 @@ class Model {
             });
     }
     static getBl(url, token) {
-        console.log(token);
         return fetch(url,
             {
                 method: 'GET',
@@ -209,7 +158,6 @@ class Model {
             });
     }
     static getBli(url, token) {
-        console.log(token);
         return fetch(url,
             {
                 method: 'GET',

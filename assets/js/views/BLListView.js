@@ -19,14 +19,14 @@ class BLListView extends AbstractView {
         //console.log(competitions[0].url + ' count : ' + competitions.length);
 
         var contenu = `<div></div>`;
-        contenu += `<div><h1>Liste des BL disponibles</h1><br>`;
+        contenu += `<div id="bl_content"><h1>Liste des BL disponibles</h1><br>`;
 
 
         contenu += `<form id="BlsForm" method="post" aria-label="Liste des BL disponibles">
-                <div class='formGroup'>
-                    <label for="blSelect">
+                <div class='form-group'>
+                    <!--<label for="blSelect">
                         Choisissez un BL: 
-                    </label>
+                    </label>-->
                     <select name="bls" id="blSelect">
                         <option value="">--Choisir un BL--</option>`;
         
@@ -36,7 +36,7 @@ class BLListView extends AbstractView {
                     
         contenu +=`</select>
                 </div>
-                <div class="formGroup">
+                <div class="form-group">
                     <button type="submit" id="btnGetBl" form='BlsForm' aria-label="sélectionner">
                         Sélectionner
                     </button>
