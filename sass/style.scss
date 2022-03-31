@@ -13,6 +13,9 @@ $vert-clair-valid: #c5f1d2;
   font-weight: 300;
 }
 
+textarea {
+  min-width: 250px;
+}
 #bye {
   display:flex;
   justify-content: center;
@@ -24,14 +27,65 @@ $vert-clair-valid: #c5f1d2;
   align-items: stretch;
 }
 
+.btn-wprod{
+  font-size: large;
+  border: 3px $gris-clair solid;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background: $bleu-clair;
+  color: $gris-clair;
+  text-align: center;
+  outline: none;
+  opacity: 1;
+  transition: opacity 300ms ease-out;
+  scale:1;
+  &:hover{
+    opacity: 1,5;
+  }
+}
 
+.bl_listing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 20px;
+}
+
+.form-valid {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+#blSelect {
+  width: 200px;
+}
+
+.bli_pdt {
+  font-size: small;
+}
+.bli_num {
+  font-size: small;
+  color:beige;
+}
+.bli_row {
+  display: flex;
+  justify-content: space-between;
+}
 
 #loginForm {
   display:flex;
   flex-direction: column;
-  justify-content: stretch;
-  align-items: stretch;
+  justify-content: space-evenly;
+  align-items: center;
   flex-wrap: wrap;
+  & div {
+    margin-bottom: 15px;
+  }
+  & :last-child {
+    margin-top: 15px;
+  }
 }
 
 .bl_content {
@@ -40,9 +94,9 @@ $vert-clair-valid: #c5f1d2;
   align-items: stretch;
 }
 
-#BlsForm {
+/* #BlsForm {
   display: flex;
-}
+} */
 
 .form-group {
   display: flex;
@@ -333,6 +387,7 @@ body {
 header, body, main {
   padding-left: 10px;
   padding-right: 10px;
+  //background-color: #353535;
 }
 header {
   margin-top: 2px;
@@ -557,6 +612,13 @@ footer {
 //fin temoignages
 
 @media only screen and (min-width:500px) {
+
+textarea {
+  min-width: 400px;
+  min-height: 30px;
+  margin-top: 5px;
+}
+
 .items {
   flex-direction: row;
   justify-content: center;
@@ -674,6 +736,12 @@ h1{
 }
 
 @media only screen and (min-width:900px) {
+
+  textarea {
+    min-width: 400px;
+    margin-top: 5px;
+  }
+
   header {
     position: sticky;
     top: 0;
@@ -697,9 +765,15 @@ h1{
   #loginForm {
     display:flex;
     flex-direction: column;
-    justify-content: stretch;
-    align-items: stretch;
+    justify-content: space-evenly;
+    align-items: center;
     flex-wrap: wrap;
+    & div {
+      margin-bottom: 15px;
+    }
+    & :last-child {
+      margin-top: 15px;
+    }
   }
   
   
@@ -1197,6 +1271,11 @@ ul li a:hover {
 
 @media only screen and (min-width:1000px) {
 
+  textarea {
+    min-width: 500px;
+    margin-top: 5px;
+  }
+
   .conception, .solutions, .temoignages, .refs {
     display: grid;
     grid-template-columns: 21% 58% 21%;
@@ -1250,6 +1329,11 @@ ul li a:hover {
 }
 
 @media only screen and (min-width:1200px) {
+  textarea {
+    min-width: 600px;
+    margin-top: 5px;
+  }
+
   .menu-container {
     display: none;
   }

@@ -23,10 +23,8 @@ class BLListView extends AbstractView {
 
 
         contenu += `<form id="BlsForm" method="post" aria-label="Liste des BL disponibles">
-                <div class='form-group'>
-                    <!--<label for="blSelect">
-                        Choisissez un BL: 
-                    </label>-->
+                <div class='bl_listing'>
+                    <div>
                     <select name="bls" id="blSelect">
                         <option value="">--Choisir un BL--</option>`;
         
@@ -35,11 +33,12 @@ class BLListView extends AbstractView {
                         };
                     
         contenu +=`</select>
-                </div>
-                <div class="form-group">
-                    <button type="submit" id="btnGetBl" form='BlsForm' aria-label="sélectionner">
-                        Sélectionner
+                    </div>
+                    <div>
+                    <button type="submit" id="btnGetBl" class="btn-wprod" form='BlsForm' aria-label="consulter">
+                        Consulter
                     </button>
+                    </div>
                 </div>
             </form>`;  
 

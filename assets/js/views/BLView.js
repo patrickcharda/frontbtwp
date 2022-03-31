@@ -24,8 +24,8 @@ class BLView extends AbstractView {
             contenu += this.renderOneBli(blis[i]);
         };
         contenu += `
-        <div class="formGroup">
-            <button type="submit" id="btnNewUser" form='blis_update' aria-label="valider">
+        <div class="form-valid">
+            <button type="submit" class="btn-wprod" id="btnValid_blis" form='blis_update' aria-label="valider">
                 Valider
             </button>
         </div>
@@ -66,7 +66,9 @@ class BLView extends AbstractView {
                 console.log(bli.bli_num, bli.chk);
             } */
             //console.log(txt_comment);
+            //document.querySelector('#topbody').click();
             router.execute('showBLUpdated', blis, bl);
+            
         })
     } 
 
@@ -74,23 +76,28 @@ class BLView extends AbstractView {
         console.log(currentBli.url);
         let bli = currentBli;
         let content = `
-        <div class='formGroup'>
-        <strong>${bli.bli_num}</strong>&nbsp;${bli.bli_libel}<br>
-        <em>Code Produit:</em>&nbsp;${bli.bli_codeproduit}<br>
-        <em>Qté: <input type="text" id="qte${bli.bli_num}" maxlength="10" size="5" value="${bli.bli_qte}"><br>
-        <em>Prix unitaire:</em>&nbsp;${bli.bli_pu}<br>
-        <em>Unité:</em>&nbsp;${bli.bli_unite}<br>
-        </div><br>
-        <div class='formGroup'>
-        <input id="chk${bli.bli_num}" type="checkbox" class="form-control" name="select"`;
+        <strong><input id="chk${bli.bli_num}" type="checkbox" class="form-control" name="select"`;
         if (bli.bli_select) {
             content+=' checked';
         }
-        content+=`/> <br />
+        content+=`/>
+
+        &nbsp;${bli.bli_libel}</strong>
+        <em><span class="bli_pdt">(${bli.bli_codeproduit})</span></em>&nbsp;<span class="bli_num">${bli.bli_num}</span><br>
+        <div class="bli_row">
+            <div>
+                Qté (${bli.bli_unite}):
+            </div>
+            <div>
+                <input type="text" id="qte${bli.bli_num}" maxlength="10" size="5" value="${bli.bli_qte}"> 
+            </div>
         </div>
-        <div class='formGroup'>
-        <label for="observations">
-        Observations :<br>
+
+        <div class="bli_row">
+            <div>
+                Obs :
+            </div>
+            <div>
         <textarea id="txtobs${bli.bli_num}" name="observations" class="form-control" placeholder="Ajouter des observations ici." rows="1" maxlength="2000">`;
         if (bli.bli_observ === null) {
             content+= "";
@@ -100,10 +107,14 @@ class BLView extends AbstractView {
         };
         
         content+=`</textarea>
+            </div>
         </div>
-        <div class='formGroup'>
-        <label for="commentaires">
-        Commentaires : <br>
+
+        <div class="bli_row">
+            <div>
+                Cmt :
+            </div>
+            <div>
         <textarea id="txtcmt${bli.bli_num}" name="commentaires" class="form-control" placeholder="Ajouter des commentaires ici." rows="1" maxlength="2000">`;
         if (bli.bli_comment === null) {
             content+= "";
@@ -112,7 +123,9 @@ class BLView extends AbstractView {
             content+=`${bli.bli_comment}`;
         };
         content+=`</textarea>
+            </div>
         </div>
+
         <br>
         `;
 
@@ -146,6 +159,8 @@ class BLView extends AbstractView {
     display(content) {
         //console.log(content);
         this.container.innerHTML += content;
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
     }
 
     cleanDivAccount() {

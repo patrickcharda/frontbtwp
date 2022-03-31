@@ -26,17 +26,17 @@ class LoginView extends AbstractView {
 
 
         let contenu = `<div>&nbsp;</div>
-        <form id="loginForm" aria-label="Formulaire de connexion" action="" method="post">
-            <div class="form-group">
-                <input type="text" id="userEmail" name="login" class="form-control" required placeholder="Identifiant" maxlength="40" minlength="5"/>
-            </div>
-            <div class="form-group">
-                <input type="password" id="userPassword" class="form-control" required maxlength="16" minlength="7" placeholder="Mot de passe">
-            </div>
-            <div class="form-group">
-                <input type="submit" id="btnNewUser" form='loginForm' aria-label="valider">
-            </div>
-        </form>
+            <form id="loginForm" aria-label="Formulaire de connexion" action="" method="post">
+                <div>
+                    <input type="text" id="userEmail" name="login" class="form-control" required placeholder="Identifiant" maxlength="40" minlength="5"/>
+                </div>
+                <div>
+                    <input type="password" id="userPassword" class="form-control" required maxlength="16" minlength="7" placeholder="Mot de passe">
+                </div>
+                <div>
+                    <input type="submit" id="btnNewUser" class="btn-wprod" form='loginForm' aria-label="valider">
+                </div>
+            </form>
         <div>&nbsp;</div>`;
         
         /* let content = `<form id="loginForm" method="post" aria-label="Formulaire de connexion">
