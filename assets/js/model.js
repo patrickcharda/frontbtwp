@@ -62,13 +62,11 @@ class Model {
             } else {
                 var pb = {
                     fullmessage : `${httpBodyResponse.status} - ${httpBodyResponse.statusText}`,
-                    shortmessage : "la galère"
                 } 
                 throw pb;
             }
         })
         .catch((error) => {
-            //console.log(pb.msg);
             return error;
         });
     }
@@ -78,7 +76,7 @@ class Model {
                 bli_select: bli.chk,
                 bli_observ: bli.obs,
                 bli_comment: bli.cmt,
-                bli_qte: parseInt(bli.qte),
+                bli_qte: parseFloat(bli.qte),
             }
             
         return fetch(url,
@@ -94,11 +92,14 @@ class Model {
             if (httpBodyResponse.ok) {
                 return httpBodyResponse.json();
             } else {
-                throw new Error(`${httpBodyResponse.status} - ${httpBodyResponse.statusText}`);
+                var pb = {
+                    fullmessage : `${httpBodyResponse.status} - ${httpBodyResponse.statusText}`,
+                } 
+                throw pb;
             }
         })
         .catch((error) => {
-            throw new Error(`Fetch catch : ${error}`);
+            return error;
         });
     }
 
@@ -120,11 +121,14 @@ class Model {
         if (httpBodyResponse.ok) {
             return httpBodyResponse.json();
         } else {
-            throw new Error(`${httpBodyResponse.status} - ${httpBodyResponse.statusText}`);
+            var pb = {
+                fullmessage : `${httpBodyResponse.status} - ${httpBodyResponse.statusText}`,
+            } 
+            throw pb;
         }
     })
     .catch((error) => {
-        throw new Error(`Fetch catch : ${error}`);
+        return error;
     });
     }
 
@@ -141,11 +145,14 @@ class Model {
                 if (httpBodyResponse.ok) {
                     return httpBodyResponse.json();
                 } else {
-                    throw new Error(`${httpBodyResponse.status} - ${httpBodyResponse.statusText}`);
+                    var pb = {
+                        fullmessage : `${httpBodyResponse.status} - ${httpBodyResponse.statusText}`,
+                    } 
+                    throw pb;
                 }
             })
             .catch((error) => {
-                throw new Error(`Fetch catch : ${error}`);
+                return error;
             });
     }
     static getBl(url, token) {
@@ -161,14 +168,40 @@ class Model {
                 if (httpBodyResponse.ok) {
                     return httpBodyResponse.json();
                 } else {
-                    throw new Error(`${httpBodyResponse.status} - ${httpBodyResponse.statusText}`);
+                    var pb = {
+                        fullmessage : `${httpBodyResponse.status} - ${httpBodyResponse.statusText}`,
+                    } 
+                    throw pb;
                 }
             })
             .catch((error) => {
-                throw new Error(`Fetch catch : ${error}`);
+                return error;
             });
     }
     static getBli(url, token) {
+        return fetch(url,
+            {
+                method: 'GET',
+                headers: { 
+                    "Content-type": "application/json; charset=UTF-8",
+                    "Authorization": "Bearer "+ token
+                }
+            })
+            .then(function(httpBodyResponse) {
+                if (httpBodyResponse.ok) {
+                    return httpBodyResponse.json();
+                } else {
+                    var pb = {
+                        fullmessage : `${httpBodyResponse.status} - ${httpBodyResponse.statusText}`,
+                    } 
+                    throw pb;
+                }
+            })
+            .catch((error) => {
+                return error;
+            });
+    }
+/*     static getBli(url, token) {
         return fetch(url,
             {
                 method: 'GET',
@@ -187,5 +220,5 @@ class Model {
             .catch((error) => {
                 throw new Error(`Fetch catch : ${error}`);
             });
-    }
+    } */
 }

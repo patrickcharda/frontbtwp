@@ -21,7 +21,7 @@ class Controller {
             let tokens = await Model.login(BASE_URL + "/login/", username, password);
 
             if (tokens.fullmessage != undefined) {
-            console.log('retour login bck : ' + tokens.fullmessage);
+            console.log('retour login : ' + tokens.fullmessage);
             throw tokens.fullmessage;
             }
             
@@ -53,12 +53,19 @@ class Controller {
             let BLList = await Model.getBls(BASE_URL + "/wprod/bls/", token);
             //console.log(BLList.results);
 
+            if (BLList.fullmessage != undefined) {
+                BLList.fullmessage+=" get liste bl";
+                console.log('retour get liste bl : ' + BLList.fullmessage);
+                throw BLList.fullmessage;
+            }
+
             let BLListView = ViewFactory.getView("BLListView");
             BLListView.addVariable("bls", BLList.results);
             BLListView.render();
         }
-        catch {
+        catch (error) {
             let errorView = ViewFactory.getView("error");
+            errorView.addVariable('errormsg', error);
             errorView.render();
         }
     }
@@ -72,7 +79,13 @@ class Controller {
             //si un bl est sélectionné ds la liste déroulante
             if (this.args[0] != "") {
                 let BL = await Model.getBl(BASE_URL + "/wprod/bl/" + this.args[0], token);
-                //localStorage.setItem('BL', JSON.stringify(BL));
+                //si message erreur :
+                if (BL.fullmessage != undefined) {
+                    BL.fullmessage+=" get bl only";
+                    console.log('retour get bl only : ' + BL.fullmessage);
+                    throw BL.fullmessage;
+                }
+
                 //s'il y a des lignes à afficher :
                 let lignes =[];
                 if (BL.lignes.length > 0) {
@@ -81,6 +94,12 @@ class Controller {
                         ligne_id = ligne_id.slice(32, ligne_id.length);
                         //console.log("ligne id : "+ ligne_id);
                         let BLI = await Model.getBli(BASE_URL + "/wprod/bli/" + ligne_id, token);
+                        //si erreur :
+                        if (BLI.fullmessage != undefined) {
+                            BLI.fullmessage+=" get bli only";
+                            console.log('retour get bli only : ' + BLI.fullmessage);
+                            throw BLI.fullmessage;
+                        }
                         lignes.push(BLI);
                     }
                     //console.log(lignes);
@@ -92,7 +111,7 @@ class Controller {
                 BLView.render();
             } 
             // lors de la mise à jour d'un BL cette fonction est rappelée
-            // si la mise à jour s'est bien déroulée, this.args[2] contient un message de réussite
+            // si la mise à jour s'est bien déroulée, this.args[2] contient la date d'actualisation
             // ce message est affiché ds la div "bye"
             if (this.args[2] != '' && typeof(this.args[2]) != 'undefined') {
                 this.args[2] = '';
@@ -113,8 +132,9 @@ class Controller {
                 divMsg.innerHTML = dateMajBLToDisplay;
             }
         }
-        catch {
+        catch (error) {
             let errorView = ViewFactory.getView("error");
+            errorView.addVariable('errormsg', error);
             errorView.render();
         }
     }
@@ -128,17 +148,20 @@ class Controller {
             for (let bli of blis) {
                 let ligne_id = bli.bli_num;
                 let bli_updated = await Model.patchBli(BASE_URL + "/wprod/bli/" + ligne_id, token, bli);
+                // si erreur :
+                if (bli_updated.fullmessage != undefined) {
+                    bli_updated.fullmessage+=" maj bli only";
+                    console.log('retour maj bli  : ' + bli_updated.fullmessage);
+                    throw bli_updated.fullmessage;
+                }
             }
-            /* let BLUpdatedView = ViewFactory.getView("BLUpdatedView");
-            BLUpdatedView.addVariable("bl", bl);
-            BLUpdatedView.addVariable("lignes", blis)
-            BLUpdatedView.render(); */
             this.args[0]= bl.bl_num;
             this.args[2] = "La mise à jour s'est bien déroulée";
             this.showBL();        
         }
-        catch {
+        catch (error) {
             let errorView = ViewFactory.getView("error");
+            errorView.addVariable('errormsg', error);
             errorView.render();
         }
     }

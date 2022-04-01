@@ -50,7 +50,7 @@ class BLView extends AbstractView {
             e.stopPropagation();
             for (let bli of blis) {
                 testchk = document.getElementById("chk"+bli.bli_num);
-                console.log(testchk.id, testchk.value, testchk.checked);
+                //console.log(testchk.id, testchk.value, testchk.checked);
                 bli.chk= testchk.checked;
                 observ = document.getElementById("txtobs"+bli.bli_num);
                 //console.log(observ.value);
@@ -60,7 +60,7 @@ class BLView extends AbstractView {
                 bli.cmt = comment.value;
                 qte = document.getElementById("qte"+bli.bli_num);
                 bli.qte = qte.value;
-                console.log(bli.qte);
+                //console.log(bli.qte);
             }
             /* for (let bli of blis) {
                 console.log(bli.bli_num, bli.chk);
@@ -75,6 +75,18 @@ class BLView extends AbstractView {
     renderOneBli(currentBli) {
         //console.log(currentBli.url);
         let bli = currentBli;
+        if (bli.bli_codeproduit == null) {
+            //console.log(bli.bli_num, bli.bli_codeproduit);
+            bli.bli_codeproduit="#";
+        }
+        if (bli.bli_unite == null) {
+            //console.log(bli.bli_num, bli.bli_codeproduit);
+            bli.bli_unite="--";
+        }
+        if (bli.bli_qte == null) {
+            //console.log(bli.bli_num, bli.bli_codeproduit);
+            bli.bli_qte="";
+        }
         let content = `
         <strong><input id="chk${bli.bli_num}" type="checkbox" class="form-control" name="select"`;
         if (bli.bli_select) {
@@ -83,10 +95,10 @@ class BLView extends AbstractView {
         content+=`/>
 
         &nbsp;${bli.bli_libel}</strong>
-        <em><span class="bli_pdt">(${bli.bli_codeproduit})</span></em>&nbsp;<span class="bli_num">${bli.bli_num}</span><br>
+        <em><span class="bli_pdt">( ${bli.bli_codeproduit} )</span></em>&nbsp;<span class="bli_num">${bli.bli_num}</span><br>
         <div class="bli_row">
             <div>
-                Qté (${bli.bli_unite}):
+                Qté (${bli.bli_unite}) :
             </div>
             <div>
                 <input type="text" id="qte${bli.bli_num}" maxlength="10" size="5" value="${bli.bli_qte}"> 
