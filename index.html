@@ -14,7 +14,7 @@
 		<link rel="stylesheet" href="./sass/style.css">
         <link href="./assets/fontawesome/css/all.css" rel="stylesheet">
         <script defer src="./assets/js/menu.js"></script>
-        <script defer src="./assets/js/slider.js"></script>
+        <!-- <script defer src="./assets/js/slider.js"></script> -->
         <script defer src="./assets/js/menuderoulant.js"></script>
         <script defer src="./assets/fontawesome/js/fa.js"></script>
         <script src="./assets/js/config.js" defer></script>
@@ -25,12 +25,13 @@
         <script src="./assets/js/views/LoginView.js" defer></script>
         <script src="./assets/js/views/BLListView.js" defer></script>
         <script src="./assets/js/views/BLView.js" defer></script>
-        <script src="./assets/js/views/BLUpdatedView.js" defer></script>
+        <!-- <script src="./assets/js/views/BLUpdatedView.js" defer></script> -->
         <script src="./assets/js/router.js" defer></script>
         <script src="./assets/js/controller.js" defer></script>
         <script src="./assets/js/main.js" defer></script>
 	</head>
-	<body onload="menu();menuinit()" id="topbody">    
+<!-- 	<body onload="menu();menuinit()" id="topbody">
+ -->    <body id="topbody">     
         <div id="scrollup"><a href="#topbody"><i class="fa-duotone fa-circle-arrow-up fa-2x"></i></a></div>
 		<header>
 			<div class="identity">
@@ -49,6 +50,7 @@
                         </path>
                     </svg>
                 </div>
+                <div id="svg-logout"><a href="index.html" onclick="logout();"><i class="fa-solid fa-arrow-right-from-bracket"></i></a></div>
 				<div id="menu">
 					<div class="nav">
                       

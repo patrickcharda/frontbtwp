@@ -52,3 +52,7 @@ function menu() {
         window.location.href = "./contact.php";
     })
 }
+
+function logout() {
+    localStorage.removeItem('user');
+}

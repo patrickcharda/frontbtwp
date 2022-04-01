@@ -18,26 +18,31 @@ class Controller {
         let username = this.args[0]; 
         let password = this.args[1];
         try {
-        let tokens = await Model.login(BASE_URL + "/login/", username, password);
-        //console.log('retour login bck :' +tokens.access);
+            let tokens = await Model.login(BASE_URL + "/login/", username, password);
 
-        if (tokens.refresh != undefined) {
-            let refreshedToken = await Model.login(BASE_URL + "/refresh-token/", tokens.refresh, '');
-            let user = {
-                "username": username,
-                "token": refreshedToken.access,
-                "loggedFrom": new Date().getTime()
-                }
-            localStorage.setItem('user', JSON.stringify(user));
-            this.showBLList()
+            if (tokens.fullmessage != undefined) {
+            console.log('retour login bck : ' + tokens.fullmessage);
+            throw tokens.fullmessage;
+            }
+            
+            if (tokens.refresh != undefined) {
+                let refreshedToken = await Model.login(BASE_URL + "/refresh-token/", tokens.refresh, '');
+                let user = {
+                    "username": username,
+                    "token": refreshedToken.access,
+                    "loggedFrom": new Date().getTime()
+                    }
+                localStorage.setItem('user', JSON.stringify(user));
+                this.showBLList()
             } else {
-            this.showLogin()
+                this.showLogin()
             }
         }
-        catch {
+        catch (error) {
             let errorView = ViewFactory.getView("error");
+            errorView.addVariable('errormsg', error);
             errorView.render();
-        }
+        };
     }
 
     async showBLList() {
@@ -67,7 +72,7 @@ class Controller {
             //si un bl est sélectionné ds la liste déroulante
             if (this.args[0] != "") {
                 let BL = await Model.getBl(BASE_URL + "/wprod/bl/" + this.args[0], token);
-                localStorage.setItem('BL', JSON.stringify(BL));
+                //localStorage.setItem('BL', JSON.stringify(BL));
                 //s'il y a des lignes à afficher :
                 let lignes =[];
                 if (BL.lignes.length > 0) {

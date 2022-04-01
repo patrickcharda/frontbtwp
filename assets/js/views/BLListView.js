@@ -3,7 +3,6 @@ class BLListView extends AbstractView {
     constructor() {
         super();
         this.container = document.getElementById(CONTAINER_ID);
-        console.log('yo');
         this.listVariables=[];
     }
 
@@ -53,7 +52,7 @@ class BLListView extends AbstractView {
 
     formSubmit() {
         const form = document.getElementById('BlsForm');
-        console.log("test id de formulaire : ", form.id);
+        //console.log("test id de formulaire : ", form.id);
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             e.stopPropagation();
@@ -65,7 +64,7 @@ class BLListView extends AbstractView {
     }
 
     renderOneBl(currentBl) {
-        console.log(currentBl.url);
+        //console.log(currentBl.url);
         let bl = currentBl;
         let content = `
             <option value="${bl.bl_num}">BL N° ${bl.bl_num} Client: ${bl.bl_nomclient}</option>
@@ -77,7 +76,7 @@ class BLListView extends AbstractView {
         while (this.container.firstChild) {
             this.container.removeChild(this.container.firstChild);
         }
-        console.log('yo+'+this.container.innerHTML);
+        //console.log('yo+'+this.container.innerHTML);
         //this.postEventsTab = [];
         //this.commentEventsTab = [];
     }
@@ -99,7 +98,7 @@ class BLListView extends AbstractView {
     }
 
     display(content) {
-        console.log(content);
+        //console.log(content);
         this.container.innerHTML += content;
     }
 
@@ -108,7 +107,7 @@ class BLListView extends AbstractView {
         while (divAccount.firstChild) {
             divAccount.removeChild(divAccount.firstChild);
         }
-        console.log('yoyo+'+divAccount.innerHTML)
+        //console.log('yoyo+'+divAccount.innerHTML)
     }
 
     

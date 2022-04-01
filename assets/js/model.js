@@ -10,6 +10,11 @@ class Model {
      * @param {string} url 
      * @return {Promise}
      */
+    static exception(fullmessage, shortmessage) {
+        this.fullmessage = fullmessage;
+        this.shortmessage = shortmessage;
+    }
+
     static get(url) {
         return fetch(url)
             .then(function(httpBodyResponse) {
@@ -55,11 +60,16 @@ class Model {
             if (httpBodyResponse.ok) {
                 return httpBodyResponse.json();
             } else {
-                throw new Error(`${httpBodyResponse.status} - ${httpBodyResponse.statusText}`);
+                var pb = {
+                    fullmessage : `${httpBodyResponse.status} - ${httpBodyResponse.statusText}`,
+                    shortmessage : "la galère"
+                } 
+                throw pb;
             }
         })
         .catch((error) => {
-            throw new Error(`Fetch catch : ${error}`);
+            //console.log(pb.msg);
+            return error;
         });
     }
 

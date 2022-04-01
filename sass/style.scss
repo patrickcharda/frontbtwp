@@ -29,19 +29,22 @@ textarea {
 
 .btn-wprod{
   font-size: large;
-  border: 3px $gris-clair solid;
+  font-weight: 700;
+  border: 1px $gris-fonce solid;
   border-radius: 10px;
   padding-left: 10px;
   padding-right: 10px;
-  background: $bleu-clair;
-  color: $gris-clair;
+  background-color: white;
+  color: $bleu-fonce;
   text-align: center;
   outline: none;
-  opacity: 1;
+  opacity: 0,8;
   transition: opacity 300ms ease-out;
   scale:1;
   &:hover{
-    opacity: 1,5;
+    opacity: 1;
+    background-color: $bleu-clair;
+    color:white;
   }
 }
 
@@ -527,12 +530,27 @@ li > ul > li {
 }
 
 #svg {
+  display:none;
+  z-index: -10;
   position: absolute;
   top: 5px;
   right: 20px;
-  z-index: 10;
+  //z-index: 10;
 
  & .fa-bars.fa-w-14 {
+  max-width: 15px;
+  max-height: 25px;
+ }
+}
+
+#svg-logout {
+  z-index: 10;
+  position: absolute;
+  top: 5px;
+  right: 20px;
+  //z-index: 10;
+
+ & .fa-solid .fa-arrow-right-from-bracket {
   max-width: 15px;
   max-height: 25px;
  }

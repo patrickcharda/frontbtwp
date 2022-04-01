@@ -11,7 +11,7 @@ class ErrorView extends AbstractView {
 
         this.cleanContainer();
 
-        let errorMessage = this.getVariable("errorMessage");
+        let errorMessage = this.getVariable("errormsg");
         
         let content = `
             <div class="erreur">

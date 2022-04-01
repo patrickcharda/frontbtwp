@@ -16,7 +16,7 @@ class BLView extends AbstractView {
 
         const bl = this.getVariable("bl");
         const blis = this.getVariable("lignes");
-        console.log(blis[0].pk);
+        //console.log(blis[0].pk);
         var contenu = `<div></div>`;
         contenu += `<div><h1>BL n° : ${bl.pk}</h1><br>
         <form id="blis_update" method="post" aria-label="Formulaire édition de ligne de BL">`;      
@@ -40,7 +40,7 @@ class BLView extends AbstractView {
 
     formSubmit(blis, bl) {
         const form = document.getElementById('blis_update');
-        console.log("test id de formulaire : ", form.id);
+        //console.log("test id de formulaire : ", form.id);
         let testchk ='';
         let observ ='';
         let comment ='';
@@ -73,7 +73,7 @@ class BLView extends AbstractView {
     } 
 
     renderOneBli(currentBli) {
-        console.log(currentBli.url);
+        //console.log(currentBli.url);
         let bli = currentBli;
         let content = `
         <strong><input id="chk${bli.bli_num}" type="checkbox" class="form-control" name="select"`;
