@@ -22,6 +22,7 @@ textarea {
 }
 
 .btn-wprod {
+  margin-top: 10px;
   font-size: large;
   font-weight: 700;
   border: 1px #302e2e solid;
@@ -29,7 +30,7 @@ textarea {
   padding-left: 10px;
   padding-right: 10px;
   background-color: white;
-  color: #106788;
+  color: rgb(16, 103, 136);
   text-align: center;
   outline: none;
   opacity: 0, 8;
@@ -38,7 +39,7 @@ textarea {
 }
 .btn-wprod:hover {
   opacity: 1;
-  background-color: #23b1e6;
+  background-color: rgb(35, 177, 230);
   color: white;
 }
 
@@ -178,14 +179,14 @@ textarea {
   position: relative;
 }
 .form-group input:required, .form-group textarea:required {
-  border: 1px solid #4c4c4c;
+  border: 1px solid rgb(76, 76, 76);
 }
 .form-group input:required + span::after, .form-group textarea:required + span::after {
   position: absolute;
   content: "requis";
   color: white;
   font-size: 0.7rem;
-  background-color: #4c4c4c;
+  background-color: rgb(76, 76, 76);
   top: 5px;
   left: -45px;
   padding-left: 3px;
@@ -222,10 +223,10 @@ textarea {
   display: inline-flex;
   flex-shrink: 4;
   justify-content: center;
-  border: 3px solid #4c4c4c;
+  border: 3px solid rgb(76, 76, 76);
   font-size: 0.6rem;
   font-weight: 500;
-  background-color: #106788;
+  background-color: rgb(16, 103, 136);
   color: #ECECEC;
   margin-top: 10px;
   margin-bottom: 20px;
@@ -233,7 +234,7 @@ textarea {
 
 #scrollup {
   z-index: 88;
-  color: #4c4c4c;
+  color: rgb(76, 76, 76);
   display: inline-block;
   cursor: pointer;
   position: fixed;
@@ -244,7 +245,7 @@ textarea {
 }
 
 .solutions {
-  background-color: #106788;
+  background-color: rgb(16, 103, 136);
   color: #ECECEC;
   padding-top: 5px;
   padding-left: 5px;
@@ -320,7 +321,7 @@ p {
   justify-content: center;
   align-items: center;
   flex-shrink: 1;
-  color: #106788;
+  color: rgb(16, 103, 136);
   font-weight: 400;
   font-size: 1.5rem;
   margin-top: 50px;
@@ -341,7 +342,7 @@ p {
   font-family: "Readex", sans-serif;
   font-size: 1.5em;
   font-style: italic;
-  color: #106788;
+  color: rgb(16, 103, 136);
   background-color: white;
   padding-left: 5px;
   padding-right: 5px;
@@ -421,12 +422,12 @@ h3 {
 }
 
 .h3-1 {
-  color: #23b1e6;
+  color: rgb(35, 177, 230);
   margin-right: 15px;
 }
 
 .h2-1 {
-  color: #4c4c4c;
+  color: rgb(76, 76, 76);
   margin-right: 15px;
 }
 
@@ -435,11 +436,11 @@ button {
 }
 button a {
   text-decoration: none;
-  color: #353535;
+  color: rgb(53, 53, 53);
 }
 button a:visited {
   text-decoration: none;
-  color: #353535;
+  color: rgb(53, 53, 53);
 }
 button a:hover {
   color: white;
@@ -448,7 +449,7 @@ button a:hover {
 .panel {
   padding: 0 18px;
   display: none;
-  background-color: #ececec;
+  background-color: rgb(236, 236, 236);
   overflow: hidden;
 }
 
@@ -464,16 +465,16 @@ li > ul > li {
   padding-top: 2px;
   padding-bottom: 2px;
   margin-bottom: 2px;
-  border-bottom: solid 1px #353535;
+  border-bottom: solid 1px rgb(53, 53, 53);
   text-align: left;
 }
 li > ul > li:last-child {
-  border-bottom: #ececec 2px solid;
+  border-bottom: rgb(236, 236, 236) 2px solid;
 }
 li > ul > li > a {
   text-decoration: none;
   font-weight: 300;
-  color: #353535;
+  color: rgb(53, 53, 53);
 }
 li > ul > li > a:hover {
   font-weight: 600;
@@ -508,8 +509,8 @@ li > ul > li > a:hover {
 }
 
 .accordion, .standalone {
-  background-color: #ececec;
-  color: #4c4c4c;
+  background-color: rgb(236, 236, 236);
+  color: rgb(76, 76, 76);
   cursor: pointer;
   padding: 18px;
   width: 100%;
@@ -525,7 +526,7 @@ li > ul > li > a:hover {
 }
 
 .active, .accordion:hover, .standalone:hover {
-  background-color: #353535;
+  background-color: rgb(53, 53, 53);
   color: white;
 }
 .active a:visited, .accordion:hover a:visited, .standalone:hover a:visited {
@@ -572,7 +573,7 @@ li > ul > li > a:hover {
   align-items: flex-end;
   width: 100%;
   min-height: 200px;
-  background-color: #23b1e6;
+  background-color: rgb(35, 177, 230);
 }
 .footer-haut > img {
   width: 100px;
@@ -585,7 +586,7 @@ li > ul > li > a:hover {
   align-items: center;
   width: 100%;
   height: 70px;
-  background-color: #353535;
+  background-color: rgb(53, 53, 53);
 }
 .footer-bas > img {
   width: 100px;
@@ -594,6 +595,7 @@ li > ul > li > a:hover {
 
 footer {
   padding-bottom: 2px;
+  margin-top: 10px;
 }
 
 .sticky {
@@ -609,7 +611,7 @@ footer {
   width: 30px;
   border: none;
   background: transparent;
-  color: #106788;
+  color: rgb(16, 103, 136);
   font-size: 40px;
   text-align: center;
   outline: none;
@@ -638,7 +640,7 @@ footer {
      object-fit: cover;
   max-width: 100px;
   max-height: 100px;
-  border: #4c4c4c solid 1px;
+  border: rgb(76, 76, 76) solid 1px;
   border-radius: 5%;
 }
 
@@ -668,12 +670,12 @@ footer {
        object-fit: cover;
     max-width: 100px;
     max-height: 100px;
-    border: #4c4c4c solid 1px;
+    border: rgb(76, 76, 76) solid 1px;
     border-radius: 5%;
   }
 
   h1 {
-    color: #106788;
+    color: rgb(16, 103, 136);
     font-weight: 400;
     font-size: 2.5rem;
     margin-top: 50px;
@@ -713,10 +715,10 @@ footer {
     display: inline-flex;
     flex-shrink: 4;
     justify-content: center;
-    border: 3px solid #4c4c4c;
+    border: 3px solid rgb(76, 76, 76);
     font-size: 0.9rem;
     font-weight: 500;
-    background-color: #106788;
+    background-color: rgb(16, 103, 136);
     color: #ECECEC;
     margin-top: 30px;
     margin-bottom: 50px;
@@ -725,10 +727,10 @@ footer {
     display: inline-flex;
     flex-shrink: 4;
     justify-content: center;
-    border: 3px solid #4c4c4c;
+    border: 3px solid rgb(76, 76, 76);
     font-size: 1.9rem;
     font-weight: 500;
-    background-color: #106788;
+    background-color: rgb(16, 103, 136);
     color: #ECECEC;
     margin-top: 30px;
     margin-bottom: 50px;
@@ -793,7 +795,7 @@ footer {
   }
 
   h1 {
-    color: #106788;
+    color: rgb(16, 103, 136);
     font-weight: 400;
     font-size: 3rem;
     margin-top: 50px;
@@ -848,10 +850,10 @@ footer {
     display: inline-flex;
     flex-shrink: 4;
     justify-content: center;
-    border: 3px solid #4c4c4c;
+    border: 3px solid rgb(76, 76, 76);
     font-size: 1.9rem;
     font-weight: 500;
-    background-color: #106788;
+    background-color: rgb(16, 103, 136);
     color: #ECECEC;
     margin-top: 30px;
     margin-bottom: 50px;
@@ -860,10 +862,10 @@ footer {
     display: inline-flex;
     flex-shrink: 4;
     justify-content: center;
-    border: 3px solid #4c4c4c;
+    border: 3px solid rgb(76, 76, 76);
     font-size: 1.9rem;
     font-weight: 500;
-    background-color: #106788;
+    background-color: rgb(16, 103, 136);
     color: #ECECEC;
     margin-top: 30px;
     margin-bottom: 50px;
@@ -950,7 +952,7 @@ footer {
 
   #ul1 {
     background: #ECECEC;
-    color: #4c4c4c;
+    color: rgb(76, 76, 76);
     position: absolute;
     width: 100%;
     left: 0;
@@ -976,7 +978,7 @@ footer {
 
   #ul2 {
     background: #ECECEC;
-    color: #4c4c4c;
+    color: rgb(76, 76, 76);
     width: 100%;
     position: absolute;
     left: 0%;
@@ -1002,7 +1004,7 @@ footer {
 
   #ul3 {
     background: #ECECEC;
-    color: #4c4c4c;
+    color: rgb(76, 76, 76);
     position: absolute;
     width: 100%;
     left: 0%;
@@ -1028,7 +1030,7 @@ footer {
 
   #ul4 {
     background: #ECECEC;
-    color: #4c4c4c;
+    color: rgb(76, 76, 76);
     position: absolute;
     width: 100%;
     left: 0%;
@@ -1054,7 +1056,7 @@ footer {
 
   #ul5 {
     background: #ECECEC;
-    color: #4c4c4c;
+    color: rgb(76, 76, 76);
     position: absolute;
     width: 100%;
     left: 0%;
@@ -1089,7 +1091,7 @@ footer {
   }
 
   ul li:first-child {
-    border-top: #4c4c4c 2px solid;
+    border-top: rgb(76, 76, 76) 2px solid;
   }
 
   ul li:last-child {
@@ -1235,7 +1237,7 @@ footer {
        object-fit: cover;
     max-width: 100px;
     max-height: 100px;
-    border: #4c4c4c solid 1px;
+    border: rgb(76, 76, 76) solid 1px;
     border-radius: 5%;
   }
 
@@ -1370,7 +1372,7 @@ footer {
   }
 
   .solutions {
-    background-color: #106788;
+    background-color: rgb(16, 103, 136);
     color: #ECECEC;
     margin-top: 10px;
     padding-top: 10px;
@@ -1495,7 +1497,7 @@ footer {
 
   #ul1 {
     background: #ECECEC;
-    color: #4c4c4c;
+    color: rgb(76, 76, 76);
     position: absolute;
     width: 100%;
     left: 0;
@@ -1521,7 +1523,7 @@ footer {
 
   #ul2 {
     background: #ECECEC;
-    color: #4c4c4c;
+    color: rgb(76, 76, 76);
     width: 100%;
     position: absolute;
     left: 0%;
@@ -1547,7 +1549,7 @@ footer {
 
   #ul3 {
     background: #ECECEC;
-    color: #4c4c4c;
+    color: rgb(76, 76, 76);
     position: absolute;
     width: 100%;
     left: 0%;
@@ -1573,7 +1575,7 @@ footer {
 
   #ul4 {
     background: #ECECEC;
-    color: #4c4c4c;
+    color: rgb(76, 76, 76);
     position: absolute;
     width: 100%;
     left: 0%;
@@ -1599,7 +1601,7 @@ footer {
 
   #ul5 {
     background: #ECECEC;
-    color: #4c4c4c;
+    color: rgb(76, 76, 76);
     position: absolute;
     width: 100%;
     left: 0%;
@@ -1897,7 +1899,7 @@ footer {
        object-fit: cover;
     max-width: 100px;
     max-height: 100px;
-    border: #4c4c4c solid 1px;
+    border: rgb(76, 76, 76) solid 1px;
     border-radius: 5%;
   }
   .items .item:nth-of-type(15) {
@@ -1912,7 +1914,7 @@ footer {
        object-fit: cover;
     max-width: 100px;
     max-height: 100px;
-    border: #4c4c4c solid 1px;
+    border: rgb(76, 76, 76) solid 1px;
     border-radius: 5%;
   }
 }

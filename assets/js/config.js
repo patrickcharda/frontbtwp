@@ -4,5 +4,6 @@
  */
 const CONTAINER_ID = "container";
 const BASE_URL = "http://localhost:8000";
+//const BASE_URL = "https://celenz.fr";
 //const BASE_STATIC = "http://localhost:3000/images";
 const DIV_ACCOUNT_ID = "account";
